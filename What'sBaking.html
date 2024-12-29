@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk and Cookie - What's Baking</title>
+    <link rel="stylesheet" href="Cookie_style.css">
+</head>
+<body>
+    <header>
+        <img id="logo" src="Milk&Cookies.png" alt="Milk & Cookies Logo">
+        <nav>
+            <ul>
+                <li><a href="CookiesandMilk.html">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="What'sBaking.html">What's Baking</a></li>
+                <li><a href="Upcoming_Cookies.html">Upcoming Cookies</a></li>
+                <li><a href="Checkout.html">Checkout</a></li>
+                <li><a href="Contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <h1>Milk and Cookie co.</h1>
+        <h2>What's Baking?</h2>
+        <h3>Here at Milk and Coookie we like to rotate our cookies you can find more info here <a href="Upcoming_Cookies.html">Upcoming Cookies</a>.</h3>
+    </header>
+    <main>
+        <section class="baking-section">
+
+            <div class="product">
+                <img src="DoubleC.jpg" alt="Double Chocolate Cookie">
+                <h3>Double Chocolate</h3>
+                <p>Our signature double chocolate chip cookie, made with rich dark chocolate chunks and a hint of sea salt.</p>
+                <div class="order-options">
+                    <label for="quantity1">Quantity:</label>
+                    <select id="quantity1">
+                        <option value="1">Just One $3.00</option>
+                        <option value="2">Or maybe Two $6.00</option>
+                        <option value="3">Why three, go four! $9.00</option>
+                        <option value="4">For me, myself,and I $12.00</option>
+                        <option value="5">Just Fill The Box $15.00</option>
+                    </select>
+                    <button onclick="addToCart(1, 'Double Chocolate', 'DoubleC.jpg', 3.00)">Box it up!</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="Smores.jpg" alt="S'mores">
+                <h3>S'mores</h3>
+                <p>Don't need to be at a campfire to enjoy this treat. Enjoy chunks of chocolate, and graham crackers. Topped with drizzle of marshmallow.</p>
+                <div class="order-options">
+                    <label for="quantity2">Quantity:</label>
+                    <select id="quantity2">
+                        <option value="1">Just One $3.00</option>
+                        <option value="2">Or maybe Two $6.00</option>
+                        <option value="3">Why three, go four! $9.00</option>
+                        <option value="4">For me, myself,and I $12.00</option>
+                        <option value="5">Just Fill The Box $15.00</option>
+                    </select>
+                    <button onclick="addToCart(2, 'Smores', 'Smores.jpg', 3.00)">Box it up!</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="PeanutC.jpg" alt="Peanut Butter Cookie">
+                <h3>Peanut Butter Bliss</h3>
+                <p>A creamy and nutty peanut butter cookie, packed with peanut butter chips and a soft, melt-in-your-mouth texture.</p>
+                <div class="order-options">
+                    <label for="quantity3">Quantity:</label>
+                    <select id="quantity3">
+                        <option value="1">Just One $3.00</option>
+                        <option value="2">Or maybe Two $6.00</option>
+                        <option value="3">Why three, go four! $9.00</option>
+                        <option value="4">For me, myself,and I $12.00</option>
+                        <option value="5">Just Fill The Box $15.00</option>
+                    </select>
+                    <button onclick="addToCart(3, 'Peanut Butter Bliss', 'PeanutC.jpg', 3.00)">Box it up!</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <p>Contact us at: info@Milkandcookies.com</p>
+    </footer>
+    <script>
+       function getCart() {
+    const cartData = localStorage.getItem('cart');
+    return cartData ? JSON.parse(cartData) : [];
+}
+
+function saveCart(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function addToCart(productId, productName, productImage, productPrice) {
+    let cartItems = getCart(); // ***CRUCIAL: Get the cart EVERY time***
+    let quantity = parseInt(document.getElementById("quantity" + productId).value) || 1;
+    let existingItem = cartItems.find(item => item.id === productId);
+
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cartItems.push({ id: productId, name: productName, image: productImage, quantity: quantity, price: productPrice });
+    }
+
+    saveCart(cartItems);
+    alert("Added to cart!");
+}
+    </script>
+</body>
+</html>

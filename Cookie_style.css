@@ -1,0 +1,527 @@
+:root {
+    --main-pink: #FF69B4;
+}
+
+
+html {
+    height: 100%; /* Important for vh units to work correctly */
+}
+
+/* General Styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+    color: black;
+    min-height: 100vh; /* Ensure body is at least viewport height */
+    box-sizing: border-box; /* Include border and padding in element's total width and height */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack content vertically */
+    border-top: 5px solid var(--main-pink);
+    border-left: 5px solid var(--main-pink);
+    border-right: 5px solid var(--main-pink);
+    background-attachment: fixed;
+}
+
+
+/* Header Styles */
+header {
+    background-color: black;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+/* Logo Styles */
+#logo {
+    max-width: 190px;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: auto;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: underline;
+    text-decoration-color: var(--main-pink);
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
+    color: white;
+}
+
+nav a:visited {
+    color: lightgray;
+}
+
+nav a:hover {
+    color: yellow;
+    text-decoration: none;
+}
+
+/* Main Content Styles */
+main {
+    flex: 1;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    align-items: flex-start; 
+}
+
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+}
+
+section {
+    padding-right: 20px;
+    grid-column: 2;
+}
+
+aside {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 10px solid var(--main-pink);
+    grid-column: 1;
+}
+
+/* General Image Styles */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Footer Styles */
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    /* Remove fixed positioning */
+}
+
+/* Other Class Examples */
+.featured-text {
+    font-style: italic;
+}
+
+.highlight {
+    background-color: yellow;
+    padding: 2px 5px;
+}
+
+/* About Section Styles */
+.about-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.team-image {
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+header h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+aside p {
+    font-size: smaller;
+}
+
+nav li.current a {
+    font-weight: bold;
+}
+
+/* What's Baking Section Styles */
+.baking-section {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.product {
+    width: calc(33.33% - 40px);
+    padding: 15px;
+    border: 1px solid #d2b48c;
+    border-radius: 8px;
+    background-color: #f5f5dc;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Order Options Styles */
+.order-options {
+    margin-top: 10px;
+}
+
+.order-options label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.order-options select,
+.order-options button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #d2b48c;
+    margin: 5px;
+}
+
+/* Upcoming Content Styles */
+.upcoming-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+    gap: 20px;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.gif-container:first-child {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.calendar {
+    grid-row: 1;
+    grid-column: 2;
+    width: 500px;
+    border-collapse: collapse;
+    background-color: #000;
+    color: var(--main-pink);
+    border: 2px solid var(--main-pink);
+}
+
+.calendar th,
+.calendar td {
+    border: 1px solid var(--main-pink);
+    padding: 8px;
+    text-align: center;
+}
+
+.calendar th {
+    background-color: #111;
+    font-weight: bold;
+}
+
+.gif-container:last-child {
+    grid-row: 1;
+    grid-column: 3;
+}
+
+/* Image Shadow Styles */
+.image-shadow {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact Us Page Styles */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid pink;
+    border-radius: 8px;
+    background-color: black;
+    box-shadow: 2px 2px 5px black;
+    margin: 20px auto;
+    max-width: 900px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    padding: 15px;
+    background-color: black;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+form
+iframe {
+    flex: 1;
+    height: 300px;
+    border: 0;
+    min-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 768px) {
+    .contact-container {
+        flex-wrap: nowrap;
+    }
+}
+
+.contact-info p, .contact-info strong {
+    color: var(--main-pink);
+}
+
+.contact-info a {
+    color: var(--main-pink);
+    text-decoration: underline;
+    text-decoration-color: var(--main-pink);
+}
+
+.contact-info a:hover {
+    color: yellow;
+    text-decoration: none;
+}
+
+form label {
+    color: black;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--main-pink);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: black;
+	text-decoration-color: var(--main-pink);
+    color: var(--main-pink);
+}
+
+form input[type="submit"] {
+    background-color: black;
+    color: Pink;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: black;
+	text-decoration-color: var(--main-pink);
+}
+
+/* Social Here */
+
+.social-links {
+    position: relative; 
+    width: 100px; 
+    height: 100px;
+    margin: 20px auto; 
+}
+
+.social-link {
+    position: absolute;
+    display: block; 
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.social-links img {
+    width: 95%;
+    height: 95%;
+    object-fit: contain; 
+    border-radius: 50%;
+    transition: transform 0.2s;
+}
+
+.social-links a:hover img {
+    transform: scale(1.1);
+}
+
+/* Positioning the links in a circle */
+.facebook {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.instagram {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.twitter {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+/* ... Checkout ... */
+
+/* Checkout Styles (Add this section if it doesn't exist) */
+.checkout-section {
+    padding: 20px;
+}
+
+.checkout-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.order-summary { /* Modified */
+    flex: 1 1 400px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: black; /* Added */
+    color: white; /* Added */
+    border: 1px solid white; /* Added */
+    width: 45%;
+}
+
+.order-summary h3 {
+    color: white; /* Added */
+    margin-top: 0;
+}
+
+#cart-items { /* Modified */
+    padding: 10px;
+    margin-top: 20px;
+    background-color: black; /* Added */
+    color: white; /* Added */
+    border: 1px solid white; /* Added */
+    width: 45%;
+}
+
+.cart-item { /* Modified */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.cart-item img { /* Modified */
+    max-height: 75px;
+    margin-right: 10px;
+}
+
+.gif-container {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.gif-container img {
+    max-width: 20%;
+    height: auto;
+    display: block;
+}
+
+.payment-container { /* Modified */
+    padding: 10px;
+    margin-top: 20px;
+    background-color: black; /* Added */
+    color: white; /* Added */
+    width: 45%;
+    border: 1px solid white; /* Added */
+}
+
+.payment-container h3 {
+    margin-top: 0;
+}
+
+.payment-container label, /* Modified */
+.payment-container input,
+.payment-container textarea,
+.payment-container select,
+.payment-container option {
+    color: white !important;
+    background-color: black;
+    border: none;
+}
+
+.payment-container textarea {
+    border: 1px solid white;
+}
+
+.payment-container select { /* Modified */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 5px;
+    border-bottom: 1px solid white;
+}
+
+/* Add this to style the month input */
+form input[type="month"]{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid var(--main-pink);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: black;
+    text-decoration-color: var(--main-pink);
+    color: var(--main-pink);
+}
+.payment-logos {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px auto 10px;
+}
+
+.payment-logos img {
+    width: 80px;
+    height: auto;
+}
+@media (max-width: 768px) {
+    .gif-container img {
+        max-width: 100%;
+    }
+}

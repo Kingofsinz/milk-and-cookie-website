@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk & Cookie - Contact Us</title>
+    <link rel="stylesheet" href="Cookie_style.css">
+</head>
+<body>
+    <header>
+		<img id="logo" src="Milk&Cookies.png" alt="Milk & Cookies Logo"> 
+        <nav>
+            <ul>
+                <li><a href="CookiesandMilk.html">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="What'sBaking.html">What's Baking</a></li>
+                <li><a href="Upcoming_Cookies.html">Upcoming Cookies</a></li>
+				<li><a href="CheckOut.html">Checkout</a></li>
+                <li><a href="Contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+		<h1>Milk and Cookie</h1>
+		<h2> Contact Us</h2>
+		
+	
+    </header>
+
+    <main>
+        <section>
+            <h2>Get in Touch</h2>
+            <p>We'd love to hear from you! Please use the form below or contact us through the following channels:</p>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p>
+                        <label for="contact-email"><strong>Email:</strong></label>
+                        <a href="mailto:info@example.com">MilkandCookie@example.com</a>
+                    </p>
+                    <p>
+                        <label for="contact-phone"><strong>Phone:</strong></label>
+                        (123) 456-7890
+                    </p>
+                    <p>
+                        <label for="contact-address"><strong>Address:</strong></label>
+                        123 Main Street, Anytown, CA 91234
+                    </p>
+
+                    <div class="social-links">  <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+                            <img src="facebook_logo.png" alt="Facebook Logo" width="50" height="50">
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                            <img src="instagram_logo.png" alt="Instagram Logo" width="50" height="50">
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+                            <img src="twitter_logo.png" alt="Twitter Logo" width="32" height="32">
+                        </a>
+                    </div>
+                </div>
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6120.1278873614165!2d-75.39373198851077!3d39.91758520338861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1735257380313!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <form action="submit_form.php" method="post">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+                <input type="submit" value="Send Message">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Milk and Cookie.co</p>
+    </footer>
+</body>
+</html>

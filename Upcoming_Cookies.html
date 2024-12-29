@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk and Cookie - Upcoming Cookies</title>
+    <link rel="stylesheet" href="Cookie_style.css">
+    <style>
+        /* Styles for grid layout, calendar animation, and other enhancements */
+        .upcoming-content {
+            display: grid;
+            grid-template-columns: auto 1fr auto; /* Three columns for GIFs and calendar */
+            grid-template-rows: auto 1fr auto; /* Three rows for staggering */
+            align-items: center;
+            justify-items: center;
+            gap: 20px;
+            width: fit-content;
+            margin: 20px auto;
+        }
+
+        .gif-container:first-child { /* Top-left GIF */
+            grid-row: 1;
+            grid-column: 1;
+        }
+
+        .calendar-container { /* Container for calendar and controls (steam animation goes here) */
+            position: relative; /* For positioning the steam */
+            grid-row: 2;
+            grid-column: 2;
+            overflow: hidden; /* Hide overflowing steam animation */
+            width: 500px; /* Adjust calendar width as needed */
+        }
+
+        .calendar {
+            border-collapse: collapse;
+            background-color: #000;
+            color: var(--main-pink);
+            border: 2px solid var(--main-pink);
+            transition: transform 0.3s ease-in-out; /* Smooth transitions for scrolling */
+        }
+
+        .calendar th,
+        .calendar td {
+            border: 1px solid var(--main-pink);
+            padding: 8px;
+            text-align: center;
+        }
+
+        .calendar th {
+            background-color: #111;
+            font-weight: bold;
+        }
+
+        .gif-container:last-child { /* Bottom-right GIF */
+            grid-row: 3;
+            grid-column: 3;
+        }
+
+        /* Steam animation styles (replace 'steam.gif' with your actual file) */
+        .steam {
+            position: absolute;
+            top: -20px; /* Adjust for steam height */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px; /* Adjust steam width */
+            height: 40px; /* Adjust steam height */
+            background-image: url('steam.gif'); /* Replace with your steam GIF */
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.7;
+            animation: steamAnimation 2s linear infinite; /* Adjust animation speed */
+        }
+
+        @keyframes steamAnimation {
+            0% { transform: translate(-50%, 0); opacity: 0.4; }
+            50%{ transform: translate(-50%, -10px); opacity: 0.7;}
+            100% { transform: translate(-50%, 0); opacity: 0.4;}
+        }
+
+        .calendar-controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+        @media (max-width: 768px) {
+            .upcoming-content {
+                grid-template-columns: 1fr; /* Single column layout */
+                grid-template-rows: auto auto auto; /* Three rows */
+            }
+
+            .gif-container:first-child {
+                grid-row: 1;
+                grid-column: 1;
+            }
+
+            .calendar-container {
+                grid-row: 2;
+                grid-column: 1;
+                width: 90%;
+            }
+
+            .gif-container:last-child {
+                grid-row: 3;
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img id="logo" src="Milk&Cookies.png" alt="Milk & Cookies Logo">
+        <nav>
+            <ul>
+                <li><a href="CookiesandMilk.html">Home</a></li>
+                <li><a href="About Us.html">About Us</a></li>
+                <li><a href="What'sBaking.html">What's Baking</a></li>
+                <li><a href="Upcoming_Cookies.html">Upcoming Cookies</a></li>
+				<li><a href="CheckOut.html">Checkout</a></li>
+                <li><a href="Contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <h1>Milk and Cookies</h1>
+        <h2>Upcoming Cookies (2025)</h2>
+    </header>
+    <main>
+        <section class="baking-section">
+            <div class="upcoming-content">
+                <div class="gif-container">
+                    <img src="street.gif" alt="Baking GIF 1">
+                </div>
+                <div class="calendar-container">
+                    <div class="steam"></div>
+                    <table class="calendar" id="myCalendar"></table>
+                    <div class="calendar-controls">
+                        <button onclick="previousMonth()">Previous</button>
+                        <span id="currentMonth"></span>
+                        <button onclick="nextMonth()">Next</button>
+                    </div>
+                </div>
+                <div class="gif-container">
+                    <img src="mixing.gif" alt="Baking GIF 2">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us at: info@Milkandcookies.com</p>
+    </footer>
+    <script>
+        let currentMonth = new Date("2025-01-01"); // Start at January 2025
+
+        function generateCalendar(date) {
+            const calendarTable = document.getElementById("myCalendar");
+            const currentMonthSpan = document.getElementById("currentMonth");
+            calendarTable.innerHTML = "";
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            currentMonthSpan.textContent = monthNames[date.getMonth()] + " " + date.getFullYear();
+
+            const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay();
+
+            let tableHTML = `<thead><tr><th colspan="7">${monthNames[date.getMonth()]} ${date.getFullYear()}</th></tr><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr></thead><tbody><tr>`;
+
+            let dayCounter = 1;
+            for (let i = 0; i < 6; i++) {
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < startingDay) {
+                        tableHTML += "<td></td>";
+                    } else if (dayCounter <= daysInMonth) {
+                        tableHTML += `<td>${dayCounter}</td>`;
+                        dayCounter++;
+                    } else {
+                        tableHTML += "<td></td>";
+                    }
+                }
+                tableHTML += "</tr><tr>";
+            }
+            tableHTML += "</tr></tbody>";
+            calendarTable.innerHTML = tableHTML;
+        }
+
+        function nextMonth() {
+            currentMonth.setMonth(currentMonth.getMonth() + 1);
+            generateCalendar(currentMonth);
+        }
+
+        function previousMonth() {
+            currentMonth.setMonth(currentMonth.getMonth() - 1);
+            generateCalendar(currentMonth);
+        }
+
+        generateCalendar(currentMonth);
+    </script>
+</body>
+</html>
